@@ -1,10 +1,11 @@
 import sqlite3
 
-def create_tables(connection):
-    cursor = connection.cursor()
 
-    # Users table
-    cursor.execute('''
+def create_tables(connection):
+  cursor = connection.cursor()
+
+  # Users table
+  cursor.execute('''
         CREATE TABLE users (
             id INTEGER PRIMARY KEY,
             username TEXT UNIQUE NOT NULL,
@@ -16,8 +17,8 @@ def create_tables(connection):
         )
     ''')
 
-    # Products table
-    cursor.execute('''
+  # Products table
+  cursor.execute('''
         CREATE TABLE products (
             id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
@@ -25,8 +26,8 @@ def create_tables(connection):
         )
     ''')
 
-    # Orders table
-    cursor.execute('''
+  # Orders table
+  cursor.execute('''
         CREATE TABLE orders (
             id INTEGER PRIMARY KEY,
             user_id INTEGER NOT NULL,
@@ -39,8 +40,8 @@ def create_tables(connection):
         )
     ''')
 
-    # Customers table
-    cursor.execute('''
+  # Customers table
+  cursor.execute('''
         CREATE TABLE customers (
             id INTEGER PRIMARY KEY,
             first_name TEXT,
@@ -50,8 +51,8 @@ def create_tables(connection):
         )
     ''')
 
-    # Payments table
-    cursor.execute('''
+  # Payments table
+  cursor.execute('''
         CREATE TABLE payments (
             id INTEGER PRIMARY KEY,
             order_id INTEGER NOT NULL,
@@ -63,8 +64,8 @@ def create_tables(connection):
         )
     ''')
 
-    # Inventory table
-    cursor.execute('''
+  # Inventory table
+  cursor.execute('''
         CREATE TABLE inventory (
             id INTEGER PRIMARY KEY,
             product_id INTEGER NOT NULL,
@@ -73,8 +74,8 @@ def create_tables(connection):
         )
     ''')
 
-    # Sales table
-    cursor.execute('''
+  # Sales table
+  cursor.execute('''
         CREATE TABLE sales (
             id INTEGER PRIMARY KEY,
             order_id INTEGER NOT NULL,
@@ -84,8 +85,8 @@ def create_tables(connection):
         )
     ''')
 
-    # Deliverymen table
-    cursor.execute('''
+  # Deliverymen table
+  cursor.execute('''
         CREATE TABLE deliverymen (
             id INTEGER PRIMARY KEY,
             first_name TEXT,
@@ -95,8 +96,8 @@ def create_tables(connection):
         )
     ''')
 
-    # Deliveries table
-    cursor.execute('''
+  # Deliveries table
+  cursor.execute('''
         CREATE TABLE deliveries (
             id INTEGER PRIMARY KEY,
             order_id INTEGER NOT NULL,
@@ -109,17 +110,19 @@ def create_tables(connection):
         )
     ''')
 
-    connection.commit()
+  connection.commit()
+
 
 def main():
-    # Connect to SQLite database (creates a new file if not exists)
-    connection = sqlite3.connect('pos_database.db')
+  # Connect to SQLite database (creates a new file if not exists)
+  connection = sqlite3.connect('pos_database.db')
 
-    # Create tables
-    create_tables(connection)
+  # Create tables
+  create_tables(connection)
 
-    # Close the connection
-    connection.close()
+  # Close the connection
+  connection.close()
+
 
 if __name__ == "__main__":
-    main()
+  main()
